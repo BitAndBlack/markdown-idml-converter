@@ -68,7 +68,7 @@ class MarkdownToStyles
     {
         $textParts = $this->parseText($string);
 
-        if (!str_starts_with($textParts[0]['format'], 'PARAGRAPH')) {
+        if (false === str_starts_with($textParts[0]['format'], 'PARAGRAPH')) {
             array_unshift($textParts, [
                 'format' => self::PARAGRAPH_STYLE_BODY,
                 'value' => '',
@@ -102,7 +102,7 @@ class MarkdownToStyles
                 throw new Exception('Malformed node. The node handler probably returned a wrong structure.');
             }
 
-            if (str_starts_with((string) $textPart['format'], 'PARAGRAPH')) {
+            if (true === str_starts_with($textPart['format'], 'PARAGRAPH')) {
                 if ([] !== $characterStyleRanges) {
                     $key = count($characterStyleRanges[$paragraphCounter]) - 1;
                     $characterStyleRanges[$paragraphCounter][$key]->addContent(new LineBreak());
@@ -214,7 +214,7 @@ class MarkdownToStyles
         $partsNamed = [];
 
         foreach ($parts as $key => $part) {
-            if (!str_starts_with($part, '{{')) {
+            if (false === str_starts_with($part, '{{')) {
                 $part = '{{' . self::CHARACTER_STYLE_REGULAR . '}}' . $part;
             }
 
