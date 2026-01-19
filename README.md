@@ -10,7 +10,7 @@
 
 # Bit&Black Markdown-IDML-Converter
 
-Convert Markdown into Adobe InDesign Markup Language Files (IDML).
+Convert Markdown into (parts of) Adobe InDesign Markup Language Files (IDML).
 
 ## Installation
 

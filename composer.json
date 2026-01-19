@@ -1,6 +1,6 @@
 {
     "name": "bitandblack/markdown-to-idml-converter",
-    "description": "Convert Markdown into Adobe InDesign Markup Language Files (IDML).",
+    "description": "Convert Markdown into (parts of) Adobe InDesign Markup Language Files (IDML).",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -11,6 +11,12 @@
         }
     ],
     "homepage": "https://www.idml.dev/en/markdown-to-idml-converter-php.html",
+    "funding": [
+        {
+            "type": "buymeacoffee",
+            "url": "https://www.buymeacoffee.com/tobiaskoengeter"
+        }
+    ],
     "require": {
         "php": ">=8.2",
         "bitandblack/idml-creator": "^2.0 || ^3.0 || ^4.0"
