@@ -27,7 +27,7 @@ class MarkdownToStyles
     public const CHARACTER_STYLE_ITALIC = 'CHARACTER_STYLE_ITALIC';
 
     /**
-     * @param array<string, StyleInterface> $formats
+     * @param array<self::PARAGRAPH_* | self::CHARACTER_* , StyleInterface> $formats
      */
     public function __construct(
         private readonly array $formats,
