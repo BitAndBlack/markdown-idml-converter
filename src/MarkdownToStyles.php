@@ -21,10 +21,10 @@ use IDML\Content\Style\StyleInterface;
 
 class MarkdownToStyles
 {
-    public const PARAGRAPH_STYLE_BODY = 'PARAGRAPHSTYLEBODY';
-    public const CHARACTER_STYLE_REGULAR = 'CHARACTERSTYLEREGULAR';
-    public const CHARACTER_STYLE_BOLD = 'CHARACTERSTYLEBOLD';
-    public const CHARACTER_STYLE_CURSIVE = 'CHARACTERSTYLECURSIVE';
+    public const PARAGRAPH_STYLE_BODY = 'PARAGRAPH_STYLE_BODY';
+    public const CHARACTER_STYLE_REGULAR = 'CHARACTER_STYLE_REGULAR';
+    public const CHARACTER_STYLE_BOLD = 'CHARACTER_STYLE_BOLD';
+    public const CHARACTER_STYLE_ITALIC = 'CHARACTER_STYLE_ITALIC';
 
     /**
      * @param array<string, StyleInterface> $formats
@@ -104,7 +104,7 @@ class MarkdownToStyles
             "/(_.+_)|(\*.+\*)/U",
             static function (array $match): string {
                 $text = substr($match[0], 1, -1);
-                return '][{{' . self::CHARACTER_STYLE_CURSIVE . '}}' . $text . '][';
+                return '][{{' . self::CHARACTER_STYLE_ITALIC . '}}' . $text . '][';
             },
             $string
         );
