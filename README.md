@@ -16,11 +16,50 @@ Convert Markdown into Adobe InDesign Markup Language Files (IDML).
 
 This library is written in [PHP](https://www.php.net) and made for the use with [Composer](https://packagist.org/packages/bitandblack/markdown-idml-converter). Be sure to have both of them installed on your system.
 
+As this library requires the [IDML Creator](https://www.idml.dev/en/idml-creator-php.html) — which requires a licence — be sure to get one at first. If not already part of your project, add the Composer credentials. (This is explained for example [here](https://www.idml.dev/en/idml-creator-php/installation.html).)
+
 Add the library then to your project by running `$ composer require bitandblack/markdown-idml-converter`.
 
 ## Usage
 
+### Converting Markdown into IDML Formatted Text 
 
+This library can convert a few Markdown formats into Paragraph and Character Styles. It can handle: 
+
+-   The base "copy" paragraph
+-   An *italic* formatting
+-   A **bold** formatting
+
+Therefore, the first step is to create an array with the styles, that should be used: 
+
+```php
+<?php
+
+use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
+use IDML\Content\Style\CharacterStyle;
+use IDML\Content\Style\ParagraphStyle;
+
+$formats = [
+    MarkdownToStyles::PARAGRAPH_STYLE_BODY => new ParagraphStyle('Body'),
+    MarkdownToStyles::CHARACTER_STYLE_REGULAR => new CharacterStyle('Regular'),
+    MarkdownToStyles::CHARACTER_STYLE_CURSIVE => new CharacterStyle('Italic'),
+    MarkdownToStyles::CHARACTER_STYLE_BOLD => new CharacterStyle('Bold'),
+];
+```
+
+Second, the [`MarkdownToStyles`](./src/MarkdownToStyles.php) class can be initialised with those styles and text can be converted:
+
+```php
+<?php
+
+use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
+
+$markdownToStyles = new MarkdownToStyles($formats);
+
+$paragraphStyleRange = $markdownToStyles->convert($markdownFormattedText);
+```
+
+The result is a IDML ParagraphStyleRange, that can be handled using the [IDML Creator](https://www.idml.dev/en/idml-creator-php.html).
 
 ## Other Tools
 
