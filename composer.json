@@ -1,5 +1,5 @@
 {
-    "name": "bitandblack/markdown-to-idml-converter",
+    "name": "bitandblack/markdown-idml-converter",
     "description": "Convert Markdown into (parts of) Adobe InDesign Markup Language Files (IDML).",
     "license": "MIT",
     "type": "library",
