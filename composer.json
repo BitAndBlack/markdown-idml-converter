@@ -22,6 +22,7 @@
         "bitandblack/idml-creator": "^2.0 || ^3.0 || ^4.0"
     },
     "require-dev": {
+        "ext-dom": "*",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.0",
         "rector/rector": "^2.0",

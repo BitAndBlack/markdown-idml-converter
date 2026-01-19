@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace BitAndBlack\MarkdownIdmlConverter\Tests;
 
+use BitAndBlack\MarkdownIdmlConverter\Exception;
 use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
 use DOMException;
 use IDML\Content\Exception\InvalidDomStructureException;
@@ -132,6 +133,85 @@ final class MarkdownToStylesTest extends TestCase
 </Story>
 ',
             $domDocument->saveXML()
+        );
+    }
+
+    /**
+     * @throws DOMException
+     * @throws InvalidDomStructureException
+     * @throws InvalidPropertyException
+     * @throws ReflectionException
+     * @throws WrongInDesignVersionException
+     * @throws Exception
+     */
+    public function testCanConvert3(): void
+    {
+        $formats = [
+            MarkdownToStyles::PARAGRAPH_STYLE_BODY => new ParagraphStyle('Body'),
+            MarkdownToStyles::PARAGRAPH_STYLE_H1 => new ParagraphStyle('H1'),
+            MarkdownToStyles::CHARACTER_STYLE_REGULAR => new CharacterStyle('Regular'),
+            MarkdownToStyles::CHARACTER_STYLE_BOLD => new CharacterStyle('Bold'),
+        ];
+
+        $input = '# Hello world! ' . PHP_EOL . PHP_EOL . 'I\'m the **first** *paragraph* here.';
+
+        $markdownToStyles = new MarkdownToStyles($formats);
+
+        $nodesExtracted = [];
+
+        $markdownToStyles->setNodeHandler(static function (array $node) use (&$nodesExtracted): ?array {
+            if (MarkdownToStyles::CHARACTER_STYLE_ITALIC === $node['format']) {
+                $nodesExtracted[] = $node;
+                return null;
+            }
+
+            return $node;
+        });
+
+        $output = $markdownToStyles->convert($input);
+
+        $story = new Story('Story');
+        $story->addContent(...$output);
+
+        $rendered = $story->render();
+
+        self::assertSame(
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Story Self="Story" AppliedTOCStyle="n" TrackChanges="false" StoryTitle="$ID/" AppliedNamedGrid="n">
+  <StoryPreference FrameType="TextFrameType"/>
+  <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/H1">
+    <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Regular">
+      <Content>Hello world! </Content>
+      <Br/>
+    </CharacterStyleRange>
+  </ParagraphStyleRange>
+  <ParagraphStyleRange AppliedParagraphStyle="ParagraphStyle/Body">
+    <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Regular">
+      <Content>I\'m the </Content>
+    </CharacterStyleRange>
+    <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Bold">
+      <Content>first</Content>
+    </CharacterStyleRange>
+    <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Regular">
+      <Content> </Content>
+    </CharacterStyleRange>
+    <CharacterStyleRange AppliedCharacterStyle="CharacterStyle/Regular">
+      <Content> here.</Content>
+    </CharacterStyleRange>
+  </ParagraphStyleRange>
+</Story>
+',
+            $rendered->saveXML()
+        );
+
+        self::assertCount(
+            1,
+            $nodesExtracted
+        );
+
+        self::assertSame(
+            'paragraph',
+            $nodesExtracted[0]['value']
         );
     }
 }
