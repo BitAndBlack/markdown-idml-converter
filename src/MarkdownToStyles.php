@@ -20,12 +20,12 @@ class MarkdownToStyles
     /**
      * @param array<string, StyleInterface> $formats
      */
-    public function __construct(private array $formats)
-    {
+    public function __construct(
+        private readonly array $formats,
+    ) {
     }
 
     /**
-     * @param string $string
      * @return array<int, ParagraphStyleRange>
      */
     public function convert(string $string): array
@@ -75,7 +75,6 @@ class MarkdownToStyles
     }
 
     /**
-     * @param string $string
      * @return array<int, array{format: string, value: string}>
      */
     private function parseText(string $string): array
@@ -118,7 +117,7 @@ class MarkdownToStyles
                 $part = '{{' . self::CHARACTER_STYLE_REGULAR . '}}' . $part;
             }
 
-            $partsNamed[(int) $key] = $part;
+            $partsNamed[$key] = $part;
         }
 
         /** @var array<int, array{format: string, value: string}> $partsNamed2 */
