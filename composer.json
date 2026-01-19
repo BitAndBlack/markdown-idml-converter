@@ -6,9 +6,11 @@
     "authors": [
         {
             "name": "Tobias Köngeter",
-            "email": "hello@bitandblack.com"
+            "email": "hello@bitandblack.com",
+            "homepage": "https://www.bitandblack.com"
         }
     ],
+    "homepage": "https://www.idml.dev/en/markdown-to-idml-converter-php.html",
     "require": {
         "php": ">=8.2",
         "bitandblack/idml-creator": "^2.0 || ^3.0"
