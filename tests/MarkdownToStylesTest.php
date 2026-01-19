@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Bit&Black Markdown IDML Converter.
+ *
+ * @author Tobias Köngeter
+ * @copyright Copyright © Bit&Black
+ * @link https://www.bitandblack.com
+ * @license MIT
+ */
+
+declare(strict_types=1);
+
 namespace BitAndBlack\MarkdownIdmlConverter\Tests;
 
 use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
@@ -7,7 +18,7 @@ use IDML\Content\Style\CharacterStyle;
 use IDML\Content\Style\ParagraphStyle;
 use PHPUnit\Framework\TestCase;
 
-class MarkdownToStylesTest extends TestCase
+final class MarkdownToStylesTest extends TestCase
 {
     public function testConvert(): void
     {
