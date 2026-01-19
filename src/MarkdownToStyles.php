@@ -15,7 +15,7 @@ class MarkdownToStyles
     public const PARAGRAPH_STYLE_BODY = 'PARAGRAPHSTYLEBODY';
     public const CHARACTER_STYLE_REGULAR = 'CHARACTERSTYLEREGULAR';
     public const CHARACTER_STYLE_BOLD = 'CHARACTERSTYLEBOLD';
-    public const CHARACTER_STYLE_KURSIVE = 'CHARACTERSTYLEKURSIVE';
+    public const CHARACTER_STYLE_CURSIVE = 'CHARACTERSTYLECURSIVE';
 
     /**
      * @param array<string, StyleInterface> $formats
@@ -75,7 +75,10 @@ class MarkdownToStyles
     }
 
     /**
-     * @return array<int, array{format: string, value: string}>
+     * @return array<int, array{
+     *     format: string,
+     *     value: string,
+     * }>
      */
     private function parseText(string $string): array
     {
@@ -92,7 +95,7 @@ class MarkdownToStyles
             "/(_.+_)|(\*.+\*)/U",
             static function (array $match): string {
                 $text = substr($match[0], 1, -1);
-                return '][{{' . self::CHARACTER_STYLE_KURSIVE . '}}' . $text . '][';
+                return '][{{' . self::CHARACTER_STYLE_CURSIVE . '}}' . $text . '][';
             },
             $string
         );
@@ -120,7 +123,12 @@ class MarkdownToStyles
             $partsNamed[$key] = $part;
         }
 
-        /** @var array<int, array{format: string, value: string}> $partsNamed2 */
+        /**
+         * @var array<int, array{
+         *     format: string,
+         *     value: string,
+         * }> $partsNamed2
+         * */
         $partsNamed2 = [];
 
         foreach ($partsNamed as $key => $part) {
