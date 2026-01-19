@@ -91,7 +91,7 @@ final class MarkdownToStylesTest extends TestCase
         $story = new Story('Story');
         $story->addContent(...$output);
 
-        $rendered = $story->render();
+        $domDocument = $story->render();
 
         self::assertSame(
             '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -131,7 +131,7 @@ final class MarkdownToStylesTest extends TestCase
   </ParagraphStyleRange>
 </Story>
 ',
-            $rendered->saveXML()
+            $domDocument->saveXML()
         );
     }
 }

@@ -27,8 +27,9 @@ Add the library then to your project by running `$ composer require bitandblack/
 This library can convert a few Markdown formats into Paragraph and Character Styles. It can handle: 
 
 -   The base "copy" paragraph
--   An *italic* formatting
--   A **bold** formatting
+-   Headlines from hierarchy 1 to 6
+-   An italic formatting
+-   A bold formatting
 
 Therefore, the first step is to create an array with the styles, that should be used:
 
@@ -41,7 +42,6 @@ use IDML\Content\Style\ParagraphStyle;
 
 $formats = [
     MarkdownToStyles::PARAGRAPH_STYLE_BODY => new ParagraphStyle('Body'),
-    MarkdownToStyles::CHARACTER_STYLE_REGULAR => new CharacterStyle('Regular'),
     MarkdownToStyles::CHARACTER_STYLE_ITALIC => new CharacterStyle('Italic'),
     MarkdownToStyles::CHARACTER_STYLE_BOLD => new CharacterStyle('Bold'),
 ];
