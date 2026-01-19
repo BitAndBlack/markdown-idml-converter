@@ -10,12 +10,12 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "bitandblack/idml-creator": "^2.0 || ^3.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.0",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^11.0",
         "rector/rector": "^2.0",
         "symplify/easy-coding-standard": "^13.0"
     },
