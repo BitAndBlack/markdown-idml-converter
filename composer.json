@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "bitandblack/idml-creator": "^2.0 || ^3.0 || ^4.0"
+        "bitandblack/idml-creator": "^5.0"
     },
     "require-dev": {
         "ext-dom": "*",

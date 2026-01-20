@@ -11,13 +11,13 @@
 
 namespace BitAndBlack\MarkdownIdmlConverter;
 
-use IDML\Content\Story\CharacterStyleRange;
-use IDML\Content\Story\LineBreak;
-use IDML\Content\Story\ParagraphStyleRange;
-use IDML\Content\Story\Text;
-use IDML\Content\Style\CharacterStyle;
-use IDML\Content\Style\ParagraphStyle;
-use IDML\Content\Style\StyleInterface;
+use BitAndBlack\IdmlCreator\Content\Story\CharacterStyleRange;
+use BitAndBlack\IdmlCreator\Content\Story\LineBreak;
+use BitAndBlack\IdmlCreator\Content\Story\ParagraphStyleRange;
+use BitAndBlack\IdmlCreator\Content\Story\Text;
+use BitAndBlack\IdmlCreator\Content\Style\CharacterStyle;
+use BitAndBlack\IdmlCreator\Content\Style\ParagraphStyle;
+use BitAndBlack\IdmlCreator\Content\Style\StyleInterface;
 
 class MarkdownToStyles
 {
