@@ -1,8 +1,8 @@
 <?php
 
+use BitAndBlack\IdmlCreator\Content\Style\CharacterStyle;
+use BitAndBlack\IdmlCreator\Content\Style\ParagraphStyle;
 use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
-use IDML\Content\Style\CharacterStyle;
-use IDML\Content\Style\ParagraphStyle;
 
 require_once dirname(__FILE__, 2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 

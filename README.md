@@ -36,9 +36,9 @@ Therefore, the first step is to create an array with the styles, that should be 
 ```php
 <?php
 
+use BitAndBlack\IdmlCreator\Content\Style\CharacterStyle;
+use BitAndBlack\IdmlCreator\Content\Style\ParagraphStyle;
 use BitAndBlack\MarkdownIdmlConverter\MarkdownToStyles;
-use IDML\Content\Style\CharacterStyle;
-use IDML\Content\Style\ParagraphStyle;
 
 $formats = [
     MarkdownToStyles::PARAGRAPH_STYLE_BODY => new ParagraphStyle('Body'),
