@@ -27,6 +27,9 @@ use ReflectionException;
 
 final class MarkdownToStylesTest extends TestCase
 {
+    /**
+     * @throws Exception
+     */
     public function testConvert1(): void
     {
         $text = <<<MARKDOWN
@@ -55,6 +58,7 @@ final class MarkdownToStylesTest extends TestCase
 
     /**
      * @throws DOMException
+     * @throws Exception
      * @throws InvalidDomStructureException
      * @throws InvalidPropertyException
      * @throws ReflectionException
@@ -173,7 +177,7 @@ final class MarkdownToStylesTest extends TestCase
         $story = new Story('Story');
         $story->addContent(...$output);
 
-        $rendered = $story->render();
+        $domDocument = $story->render();
 
         self::assertSame(
             '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -201,7 +205,7 @@ final class MarkdownToStylesTest extends TestCase
   </ParagraphStyleRange>
 </Story>
 ',
-            $rendered->saveXML()
+            $domDocument->saveXML()
         );
 
         self::assertCount(
