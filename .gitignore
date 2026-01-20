@@ -3,3 +3,4 @@
 auth.json
 composer.lock
 .phpunit.cache
+.DS_Store
